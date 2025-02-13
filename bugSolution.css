@@ -1,0 +1,23 @@
+The solution involves carefully examining the CSS specificity and inheritance order.  One approach to solve this is to ensure the selector for the child element (`div p`) is more specific or is placed later in the stylesheet after the other conflicting rules to ensure the correct overriding behavior.  For instance:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+/* increase specificity */
+div > p {
+  color: green; /* more specific selector */
+}
+
+/* Alternatively, make it explicit by adding !important, although use of !important is generally discouraged */
+div p {
+  color: green !important; /*This rule overrides all other rules with !important*/
+}
+```
+
+Another solution might be to avoid style inheritance from other selectors where appropriate, or use the `!important` flag. The `!important` flag should be used sparingly and is often an indication of broader problems in CSS architecture.
